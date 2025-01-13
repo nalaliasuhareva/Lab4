@@ -1,1 +1,19 @@
+import pandas as pd
+import json
+
+input_file = '/mnt/data/User.xlsx'
+output_file = '/mnt/data/Converted.json'
+
+try:
+    df = pd.read_excel(input_file)
+
+    result = df.to_json(orient='records', force_ascii=False, indent=4)
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(result)
+
+    print(f"Файл успешно конвертирован и сохранен в {output_file}")
+
+except Exception as e:
+    print(f"Произошла ошибка: {e}")
 
